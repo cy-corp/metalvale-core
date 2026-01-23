@@ -11,8 +11,12 @@
   --color-secondary: #231F20;
   --color-secondary-foreground: #FFFFFF;
 
-  --color-muted: #303030;
-  --color-muted-foreground: #A1A1AA;
+  --color-muted: #F4F4F5;
+  --color-muted-dark: #303030;
+  --color-muted-foreground: #71717A;
+
+  --color-accent: #F4F4F5;
+  --color-accent-foreground: #231F20;
 
   --color-background: #FFFFFF;
   --color-foreground: #231F20;
@@ -20,8 +24,11 @@
   --color-card: #FFFFFF;
   --color-card-foreground: #231F20;
 
-  --color-border: #E5E7EB;
-  --color-input: #E5E7EB;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #231F20;
+
+  --color-border: #F1F1F1;
+  --color-input: #F1F1F1;
   --color-ring: #EC1C24;
 
   /* Shadcn-like mapping for components */

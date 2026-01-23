@@ -38,7 +38,7 @@ export function RecentOrdersTable({ orders }: RecentOrdersTableProps) {
                 </TableHeader>
                 <TableBody>
                     {orders.map((order) => (
-                        <TableRow key={order.id} className="border-border hover:bg-muted/50 transition-colors cursor-pointer">
+                        <TableRow key={order.id} className="border-border hover:bg-muted transition-colors cursor-pointer">
                             <TableCell className="font-bold font-josefin">{order.number}</TableCell>
                             <TableCell className="font-josefin text-muted-foreground">{order.customerName}</TableCell>
                             <TableCell className="font-bold font-avant text-primary">

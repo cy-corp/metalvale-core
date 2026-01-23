@@ -38,7 +38,7 @@ export function AppSidebar() {
                 collapsed ? "w-20" : "w-64"
             )}
         >
-            <div className="flex h-16 items-center justify-between px-6 border-b border-muted">
+            <div className="flex h-16 items-center justify-between px-6 border-b border-muted-dark">
                 {!collapsed && (
                     <span className="font-avant font-bold text-xl tracking-tighter text-white">
                         METAL<span className="text-primary">VALE</span>
@@ -47,7 +47,7 @@ export function AppSidebar() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="text-white hover:bg-muted"
+                    className="text-white hover:bg-muted-dark"
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
@@ -65,7 +65,7 @@ export function AppSidebar() {
                                 "group flex items-center rounded-md px-3 py-2.5 text-sm font-medium transition-all duration-150",
                                 isActive
                                     ? "bg-primary text-white shadow-md shadow-primary/20"
-                                    : "text-muted-foreground hover:bg-muted hover:text-white"
+                                    : "text-muted-foreground hover:bg-muted-dark hover:text-white"
                             )}
                         >
                             <item.icon
@@ -80,10 +80,10 @@ export function AppSidebar() {
                 })}
             </nav>
 
-            <div className="border-t border-muted p-3 space-y-1">
+            <div className="border-t border-muted-dark p-3 space-y-1">
                 <Link
                     href="/settings"
-                    className="flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-white transition-all"
+                    className="flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted-dark hover:text-white transition-all"
                 >
                     <Settings className="h-5 w-5 shrink-0" />
                     {!collapsed && <span className="ml-3 font-josefin">Configurações</span>}

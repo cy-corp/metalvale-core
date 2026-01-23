@@ -9,7 +9,7 @@ export function AppHeader() {
                 <input
                     type="text"
                     placeholder="Buscar pedidos, produtos..."
-                    className="h-10 w-full rounded-md border border-border bg-muted/30 pl-10 pr-4 text-sm font-josefin focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    className="h-10 w-full rounded-md border border-border bg-muted pl-10 pr-4 text-sm font-josefin focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
             </div>
 
