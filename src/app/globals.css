@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* MetalVale Brand Colors */
+  --color-primary: #EC1C24;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #231F20;
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: #303030;
+  --color-muted-foreground: #A1A1AA;
+
+  --color-background: #FFFFFF;
+  --color-foreground: #231F20;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: #231F20;
+
+  --color-border: #E5E7EB;
+  --color-input: #E5E7EB;
+  --color-ring: #EC1C24;
+
+  /* Shadcn-like mapping for components */
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+
+  /* Typography */
+  --font-avant: var(--font-outfit), "ITC Avant Garde Gothic", sans-serif;
+  --font-josefin: var(--font-josefin), "Josefin Sans", sans-serif;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Animation */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-josefin;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-avant font-bold;
+  }
+}
+
+@layer components {
+  .metric-value {
+    @apply font-avant font-bold text-primary;
+    font-stretch: condensed;
+  }
+}
