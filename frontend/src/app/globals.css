@@ -4,77 +4,82 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* MetalVale Brand Colors */
+  /* MetalVale Brand Colors - Refined for Premium Feel */
   --color-primary: #EC1C24;
   --color-primary-foreground: #FFFFFF;
 
-  --color-secondary: #231F20;
+  --color-secondary: #1A1A1B; /* Deeper, more "Ive" charcoal */
   --color-secondary-foreground: #FFFFFF;
 
-  --color-muted: #F4F4F5;
-  --color-muted-dark: #303030;
-  --color-muted-foreground: #71717A;
+  --color-muted: #F8F9FA;
+  --color-muted-dark: #232324;
+  --color-muted-foreground: #64748B; /* More balanced gray */
 
-  --color-accent: #F4F4F5;
-  --color-accent-foreground: #231F20;
+  --color-accent: #F1F5F9;
+  --color-accent-foreground: #1A1A1B;
 
   --color-background: #FFFFFF;
-  --color-foreground: #231F20;
+  --color-foreground: #1A1A1B;
 
   --color-card: #FFFFFF;
-  --color-card-foreground: #231F20;
+  --color-card-foreground: #1A1A1B;
 
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #231F20;
+  --color-popover-foreground: #1A1A1B;
 
   --color-border: #F1F1F1;
-  --color-input: #F1F1F1;
-  --color-ring: #EC1C24;
+  --color-input: #F8F9FA;
+  --color-ring: rgba(236, 28, 36, 0.1);
 
-  /* Shadcn-like mapping for components */
-  --color-destructive: #EF4444;
+  /* Functional Colors */
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-info: #0284C7;
+  --color-destructive: #DC2626;
   --color-destructive-foreground: #FFFFFF;
 
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-info: #3B82F6;
-
   /* Typography */
-  --font-avant: var(--font-outfit), "ITC Avant Garde Gothic", sans-serif;
+  --font-avant: var(--font-outfit), "Outfit", sans-serif;
   --font-josefin: var(--font-josefin), "Josefin Sans", sans-serif;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Radii - Premium & Aggressive */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-premium: 20px; /* For cards and major containers */
+
+  /* Shadows - Layered and Subtle */
+  --shadow-premium: 0 8px 30px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.08);
+  --shadow-active: 0 4px 15px rgba(236, 28, 36, 0.12);
 
   /* Animation */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-in: fade-in 0.4s ease-out;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-none;
   }
 
   body {
-    @apply bg-background text-foreground font-josefin;
+    @apply bg-muted text-foreground font-josefin antialiased selection:bg-primary/10 selection:text-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-avant font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-avant font-bold tracking-tight;
   }
 }
 
 @layer components {
+  .premium-card {
+    @apply bg-card border border-border shadow-premium rounded-premium transition-all duration-300;
+  }
+
   .metric-value {
-    @apply font-avant font-bold text-primary;
-    font-stretch: condensed;
+    @apply font-avant font-bold text-primary tracking-tighter;
   }
 }

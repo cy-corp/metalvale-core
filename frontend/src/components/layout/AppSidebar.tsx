@@ -34,11 +34,11 @@ export function AppSidebar() {
     return (
         <aside
             className={cn(
-                "relative flex flex-col border-r border-border bg-secondary text-white transition-all duration-300 ease-in-out",
+                "relative flex flex-col border-r border-border bg-secondary text-white transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)]",
                 collapsed ? "w-20" : "w-64"
             )}
         >
-            <div className="flex h-16 items-center justify-between px-6 border-b border-muted-dark">
+            <div className="flex h-16 items-center justify-between px-6 border-b border-white/5">
                 {!collapsed && (
                     <span className="font-avant font-bold text-xl tracking-tighter text-white">
                         METAL<span className="text-primary">VALE</span>
@@ -47,52 +47,69 @@ export function AppSidebar() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="text-white hover:bg-muted-dark"
+                    className="text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                 </Button>
             </div>
 
-            <nav className="flex-1 space-y-1 p-3 mt-4">
+            <nav className="flex-1 space-y-1.5 p-4 mt-6">
                 {menuItems.map((item) => {
-                    const isActive = pathname === item.href || (item.href === "/dashboard" && pathname === "/");
+                    const isActive = pathname === item.href || (item.href === "/dashboard" && (pathname === "/" || pathname === "/dashboard"));
                     return (
                         <Link
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "group flex items-center rounded-md px-3 py-2.5 text-sm font-medium transition-all duration-150",
+                                "group relative flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-300",
                                 isActive
-                                    ? "bg-primary text-white shadow-md shadow-primary/20"
-                                    : "text-muted-foreground hover:bg-muted-dark hover:text-white"
+                                    ? "bg-white/5 text-white"
+                                    : "text-muted-foreground hover:bg-white/5 hover:text-white"
                             )}
                         >
                             <item.icon
                                 className={cn(
-                                    "h-5 w-5 shrink-0 transition-colors",
-                                    isActive ? "text-white" : "group-hover:text-white"
+                                    "h-5 w-5 shrink-0 transition-colors duration-300",
+                                    isActive ? "text-primary" : "group-hover:text-white"
                                 )}
                             />
-                            {!collapsed && <span className="ml-3 font-josefin">{item.label}</span>}
+                            {!collapsed && (
+                                <span className="ml-3 font-avant tracking-tight">
+                                    {item.label}
+                                </span>
+                            )}
+                            {isActive && (
+                                <div className="absolute left-[-16px] h-5 w-1 rounded-full bg-primary" />
+                            )}
                         </Link>
                     );
                 })}
             </nav>
 
-            <div className="border-t border-muted-dark p-3 space-y-1">
+            <div className="border-t border-white/5 p-4 space-y-1.5">
                 <Link
                     href="/settings"
-                    className="flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted-dark hover:text-white transition-all"
+                    className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-white/5 hover:text-white transition-all duration-300"
                 >
                     <Settings className="h-5 w-5 shrink-0" />
-                    {!collapsed && <span className="ml-3 font-josefin">Configurações</span>}
+                    {!collapsed && <span className="ml-3 font-avant tracking-tight">Configurações</span>}
                 </Link>
+
+                <div className="px-3 py-2 flex items-center gap-3">
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                    {!collapsed && (
+                        <span className="text-[10px] font-bold font-avant uppercase tracking-widest text-emerald-500/80">
+                            System Live
+                        </span>
+                    )}
+                </div>
+
                 <button
-                    className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-destructive/20 hover:text-destructive transition-all"
+                    className="flex w-full items-center rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
                 >
                     <LogOut className="h-5 w-5 shrink-0" />
-                    {!collapsed && <span className="ml-3 font-josefin">Sair</span>}
+                    {!collapsed && <span className="ml-3 font-avant tracking-tight">Sair</span>}
                 </button>
             </div>
         </aside>

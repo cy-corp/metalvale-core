@@ -13,17 +13,17 @@ export default function DashboardPage() {
     const { metrics, recentOrders, chartData } = useDashboardMetrics();
 
     return (
-        <div className="space-y-8 animate-in fade-in duration-500">
+        <div className="space-y-10">
             <PageHeader
                 title="Dashboard"
-                subtitle="Visão geral do e-commerce e produção"
+                subtitle="High-precision overview of e-commerce and industrial production"
                 actions={
                     <>
-                        <Button variant="outline" size="sm" className="hidden sm:flex border-border font-josefin">
-                            <Filter className="mr-2 h-4 w-4" /> Filtros
+                        <Button variant="outline" size="sm" className="hidden sm:flex border-border bg-white text-secondary font-avant font-semibold tracking-tight h-9 rounded-lg px-4 hover:bg-muted transition-colors">
+                            <Filter className="mr-2 h-3.5 w-3.5" /> Filters
                         </Button>
-                        <Button size="sm" className="bg-primary hover:bg-primary/90 text-white font-josefin">
-                            <Download className="mr-2 h-4 w-4" /> Exportar Relatório
+                        <Button size="sm" className="bg-primary hover:bg-primary/90 text-white font-avant font-semibold tracking-tight h-9 rounded-lg px-4 shadow-active transition-all active:scale-95">
+                            <Download className="mr-2 h-3.5 w-3.5" /> Export Report
                         </Button>
                     </>
                 }
@@ -34,48 +34,49 @@ export default function DashboardPage() {
                     <MetricCard
                         key={metric.title}
                         {...metric}
-                        className={index < 2 ? "xl:col-span-1" : "xl:col-span-1"}
+                        className="animate-in fade-in slide-in-from-bottom-3 duration-500 fill-mode-both"
+                        style={{ animationDelay: `${index * 100}ms` }}
                     />
                 ))}
             </div>
 
             <div className="grid gap-6 lg:grid-cols-7">
-                <Card className="lg:col-span-4 border-border shadow-sm">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <Card className="lg:col-span-4 border-border shadow-premium rounded-premium bg-card overflow-hidden transition-all duration-300 hover:shadow-active/5">
+                    <CardHeader className="flex flex-row items-center justify-between pb-4">
                         <div>
-                            <CardTitle className="text-xl font-bold font-avant uppercase tracking-tight">
-                                Faturamento nos Últimos 30 Dias
+                            <CardTitle className="text-xl font-bold font-avant tracking-tighter text-secondary">
+                                Revenue Trends
                             </CardTitle>
-                            <p className="text-sm text-muted-foreground font-josefin mt-1">
-                                Progresso diário de vendas do e-commerce
+                            <p className="text-xs text-muted-foreground font-josefin mt-1 uppercase tracking-widest font-medium">
+                                Last 30 Days Activity
                             </p>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1.5">
-                                <div className="h-3 w-3 rounded-full bg-primary" />
-                                <span className="text-xs font-josefin">Faturamento (R$)</span>
+                                <div className="h-2 w-2 rounded-full bg-primary" />
+                                <span className="text-[10px] font-bold font-avant uppercase tracking-wider text-muted-foreground">Sales (R$)</span>
                             </div>
                         </div>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="pt-2">
                         <SalesChart data={chartData} />
                     </CardContent>
                 </Card>
 
-                <Card className="lg:col-span-3 border-border shadow-sm overflow-hidden">
-                    <CardHeader>
-                        <CardTitle className="text-xl font-bold font-avant uppercase tracking-tight">
-                            Últimos Pedidos
+                <Card className="lg:col-span-3 border-border shadow-premium rounded-premium bg-card overflow-hidden">
+                    <CardHeader className="pb-4">
+                        <CardTitle className="text-xl font-bold font-avant tracking-tighter text-secondary">
+                            Live Activity
                         </CardTitle>
-                        <p className="text-sm text-muted-foreground font-josefin mt-1">
-                            Atividades recentes da fábrica e loja
+                        <p className="text-xs text-muted-foreground font-josefin mt-1 uppercase tracking-widest font-medium">
+                            Recent Factory & Store Orders
                         </p>
                     </CardHeader>
                     <CardContent className="p-0">
                         <RecentOrdersTable orders={recentOrders} />
-                        <div className="p-4 border-t border-border">
-                            <Button variant="ghost" className="w-full text-primary hover:text-primary hover:bg-primary/5 font-bold font-josefin">
-                                Ver Todos os Pedidos
+                        <div className="p-4 bg-muted/30">
+                            <Button variant="ghost" className="w-full text-primary hover:text-primary hover:bg-primary/5 font-bold font-avant tracking-tight text-sm">
+                                View Full Transaction History
                             </Button>
                         </div>
                     </CardContent>
