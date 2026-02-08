@@ -6,8 +6,9 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    Area,
-    AreaChart,
+    Line,
+    LineChart,
+    Dot
 } from "recharts";
 
 interface SalesChartProps {
@@ -15,71 +16,94 @@ interface SalesChartProps {
 }
 
 export function SalesChart({ data }: SalesChartProps) {
+    // Custom dot only for the last data point
+    const RenderLastDot = (props: any) => {
+        const { cx, cy, index } = props;
+        if (index === data.length - 1) {
+            return (
+                <Dot
+                    cx={cx}
+                    cy={cy}
+                    r={4}
+                    fill="#EC1C24"
+                    stroke="var(--color-card)"
+                    strokeWidth={2}
+                />
+            );
+        }
+        return null;
+    };
+
     return (
-        <div className="h-[300px] w-full mt-2">
+        <div className="h-[250px] w-full mt-2">
             <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
-                        <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#EC1C24" stopOpacity={0.15} />
-                            <stop offset="95%" stopColor="#EC1C24" stopOpacity={0.01} />
-                        </linearGradient>
+                        <filter id="shadow" height="200%">
+                            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
+                            <feOffset in="blur" dx="0" dy="4" result="offsetBlur" />
+                            <feComponentTransfer>
+                                <feFuncA type="linear" slope="0.2" />
+                            </feComponentTransfer>
+                            <feMerge>
+                                <feMergeNode />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F1F1" />
+                    <CartesianGrid strokeDasharray="0" horizontal={true} vertical={false} stroke="var(--color-border)" opacity={0.4} />
                     <XAxis
                         dataKey="date"
-                        stroke="#94A3B8"
+                        stroke="var(--color-muted-foreground)"
                         fontSize={10}
                         tickLine={false}
                         axisLine={false}
-                        tickFormatter={(value) => value.replace("Day ", "")}
+                        tickFormatter={(value, index) => index % 4 === 0 ? value.replace("Day ", "") : ""}
                         fontFamily="var(--font-outfit)"
                         dy={10}
                     />
                     <YAxis
-                        stroke="#94A3B8"
+                        stroke="var(--color-muted-foreground)"
                         fontSize={10}
                         tickLine={false}
                         axisLine={false}
-                        tickFormatter={(value) => `R$${value / 1000}k`}
+                        tickFormatter={(value) => value > 0 ? value : ""}
                         fontFamily="var(--font-outfit)"
                     />
                     <Tooltip
-                        cursor={{ stroke: '#EC1C24', strokeWidth: 1, strokeDasharray: '4 4' }}
+                        cursor={{ stroke: '#EC1C24', strokeWidth: 1 }}
                         contentStyle={{
-                            backgroundColor: "rgba(26, 26, 27, 0.95)",
-                            backdropFilter: "blur(8px)",
-                            border: "1px solid rgba(255, 255, 255, 0.1)",
-                            borderRadius: "12px",
-                            boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
-                            padding: "12px 16px",
+                            backgroundColor: "var(--color-card)",
+                            border: "1px solid var(--color-border)",
+                            borderRadius: "8px",
+                            boxShadow: "var(--shadow-premium)",
+                            padding: "8px 12px",
                         }}
                         labelStyle={{
-                            color: "#94A3B8",
+                            color: "var(--color-muted-foreground)",
                             fontFamily: "var(--font-josefin)",
-                            fontSize: "12px",
-                            marginBottom: "4px",
+                            fontSize: "10px",
                             textTransform: "uppercase",
-                            letterSpacing: "0.05em"
+                            letterSpacing: "0.1em"
                         }}
                         itemStyle={{
-                            color: "#FFFFFF",
+                            color: "var(--color-foreground)",
                             fontFamily: "var(--font-outfit)",
                             fontWeight: "700",
-                            fontSize: "14px",
-                            padding: "0"
+                            fontSize: "12px",
                         }}
                     />
-                    <Area
+                    <Line
                         type="monotone"
                         dataKey="revenue"
-                        stroke="#EC1C24"
-                        strokeWidth={2.5}
-                        fillOpacity={1}
-                        fill="url(#colorRevenue)"
-                        animationDuration={1500}
+                        stroke="var(--color-foreground)"
+                        strokeWidth={2}
+                        dot={<RenderLastDot />}
+                        activeDot={{ r: 4, fill: "#EC1C24", strokeWidth: 0 }}
+                        animationDuration={2000}
+                        style={{ filter: "url(#shadow)" }}
                     />
-                </AreaChart>
+                </LineChart>
             </ResponsiveContainer>
         </div>
     );

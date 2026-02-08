@@ -5,6 +5,11 @@ import { cn } from "@/lib/utils";
 interface MetricCardProps {
     title: string;
     value: string | number;
+    description?: string;
+    cta?: {
+        label: string;
+        href: string;
+    };
     delta?: {
         value: number;
         isPositive: boolean;
@@ -14,45 +19,59 @@ interface MetricCardProps {
     style?: React.CSSProperties;
 }
 
-export function MetricCard({ title, value, delta, icon: Icon, className, style }: MetricCardProps) {
+export function MetricCard({
+    title,
+    value,
+    description,
+    cta,
+    delta,
+    icon: Icon,
+    className,
+    style
+}: MetricCardProps) {
     return (
         <Card
-            className={cn("overflow-hidden border-border bg-card shadow-premium rounded-premium transition-all duration-300 hover:shadow-active group", className)}
+            className={cn("premium-card h-full", className)}
             style={style}
         >
-            <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                    <div className="space-y-1">
-                        <p className="text-sm font-medium text-muted-foreground font-josefin tracking-tight">
-                            {title}
-                        </p>
-                        <h3 className="text-3xl font-bold font-avant tracking-tighter text-secondary">
-                            {value}
-                        </h3>
-                    </div>
-                    <div className="rounded-xl bg-muted p-2.5 transition-colors duration-300 group-hover:bg-primary/5">
-                        <Icon className="h-5 w-5 text-muted-foreground transition-colors duration-300 group-hover:text-primary" />
-                    </div>
+            <CardContent className="p-8 flex flex-col h-full">
+                <div className="flex items-start justify-between mb-2">
+                    <p className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
+                        {title}
+                    </p>
+                    <Icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
 
-                {delta && (
-                    <div className="mt-4 flex items-center gap-1.5">
+                <div className="flex items-baseline gap-2">
+                    <h3 className="metric-value text-5xl">
+                        {value}
+                    </h3>
+                    {delta && (
                         <div className={cn(
-                            "flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold font-avant",
-                            delta.isPositive ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive"
+                            "flex items-center text-[10px] font-bold font-avant",
+                            delta.isPositive ? "text-primary" : "text-destructive"
                         )}>
-                            {delta.isPositive ? (
-                                <ArrowUpRight className="h-3 w-3" />
-                            ) : (
-                                <ArrowDownRight className="h-3 w-3" />
-                            )}
+                            {delta.isPositive ? <ArrowUpRight size={14} strokeWidth={3} /> : <ArrowDownRight size={14} strokeWidth={3} />}
                             {delta.value}%
                         </div>
-                        <span className="text-[10px] font-medium text-muted-foreground font-josefin uppercase tracking-wider">
-                            vs mês anterior
-                        </span>
-                    </div>
+                    )}
+                </div>
+
+                {description && (
+                    <p className="text-xs text-muted-foreground font-josefin mt-1">
+                        {description}
+                    </p>
                 )}
+
+                <div className="mt-8 pt-0">
+                    {cta ? (
+                        <a href={cta.href} className="text-[10px] font-bold font-avant uppercase tracking-widest text-primary hover:underline inline-flex items-center gap-1.5 transition-all">
+                            {cta.label} <ArrowUpRight size={12} strokeWidth={3} />
+                        </a>
+                    ) : (
+                        <div className="h-[14px]" />
+                    )}
+                </div>
             </CardContent>
         </Card>
     );

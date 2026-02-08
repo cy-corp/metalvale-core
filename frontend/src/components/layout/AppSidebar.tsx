@@ -20,11 +20,10 @@ import { Button } from "@/components/ui/button";
 
 const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-    { icon: ShoppingCart, label: "Pedidos", href: "/pedidos" },
-    { icon: Package, label: "Produtos", href: "/produtos" },
-    { icon: Users, label: "Clientes", href: "/clientes" },
-    { icon: Warehouse, label: "Estoque", href: "/estoque" },
-    { icon: BarChart3, label: "Relatórios", href: "/relatorios" },
+    { icon: Package, label: "Inventory", href: "/inventory" },
+    { icon: Warehouse, label: "Production", href: "/production" },
+    { icon: Users, label: "Finance", href: "/finance" },
+    { icon: BarChart3, label: "Reports", href: "/reports" },
 ];
 
 export function AppSidebar() {
@@ -34,27 +33,27 @@ export function AppSidebar() {
     return (
         <aside
             className={cn(
-                "relative flex flex-col border-r border-border bg-secondary text-white transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)]",
+                "relative flex flex-col glassmorphism transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] z-40",
                 collapsed ? "w-20" : "w-64"
             )}
         >
-            <div className="flex h-16 items-center justify-between px-6 border-b border-white/5">
+            <div className="flex h-24 items-center justify-between px-8">
                 {!collapsed && (
-                    <span className="font-avant font-bold text-xl tracking-tighter text-white">
-                        METAL<span className="text-primary">VALE</span>
+                    <span className="font-avant font-bold text-2xl tracking-tighter text-foreground">
+                        MetalVale
                     </span>
                 )}
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+                    className="text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                 </Button>
             </div>
 
-            <nav className="flex-1 space-y-1.5 p-4 mt-6">
+            <nav className="flex-1 space-y-1.5 p-4">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href || (item.href === "/dashboard" && (pathname === "/" || pathname === "/dashboard"));
                     return (
@@ -62,54 +61,46 @@ export function AppSidebar() {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "group relative flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-300",
+                                "group relative flex items-center rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300",
                                 isActive
-                                    ? "bg-white/5 text-white"
-                                    : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                                    ? "bg-white/80 dark:bg-white/10 text-foreground shadow-sm"
+                                    : "text-muted-foreground hover:bg-white/40 dark:hover:bg-white/5 hover:text-foreground"
                             )}
                         >
+                            {/* Active Indicator Bar - Exact Mockup Style */}
+                            {isActive && (
+                                <div className="absolute left-[-16px] top-1/2 -translate-y-1/2 h-7 w-[3px] rounded-r-full bg-primary animate-in fade-in slide-in-from-left-2 duration-400" />
+                            )}
+
                             <item.icon
                                 className={cn(
                                     "h-5 w-5 shrink-0 transition-colors duration-300",
-                                    isActive ? "text-primary" : "group-hover:text-white"
+                                    isActive ? "text-foreground" : "group-hover:text-foreground"
                                 )}
                             />
                             {!collapsed && (
-                                <span className="ml-3 font-avant tracking-tight">
+                                <span className="ml-4 font-avant tracking-tight font-semibold">
                                     {item.label}
                                 </span>
-                            )}
-                            {isActive && (
-                                <div className="absolute left-[-16px] h-5 w-1 rounded-full bg-primary" />
                             )}
                         </Link>
                     );
                 })}
             </nav>
 
-            <div className="border-t border-white/5 p-4 space-y-1.5">
+            <div className="p-4 space-y-1 pb-8">
                 <Link
                     href="/settings"
-                    className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-white/5 hover:text-white transition-all duration-300"
+                    className="flex items-center rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-white/40 dark:hover:bg-white/5 hover:text-foreground transition-all duration-300"
                 >
                     <Settings className="h-5 w-5 shrink-0" />
-                    {!collapsed && <span className="ml-3 font-avant tracking-tight">Configurações</span>}
+                    {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Settings</span>}
                 </Link>
-
-                <div className="px-3 py-2 flex items-center gap-3">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                    {!collapsed && (
-                        <span className="text-[10px] font-bold font-avant uppercase tracking-widest text-emerald-500/80">
-                            System Live
-                        </span>
-                    )}
-                </div>
-
                 <button
-                    className="flex w-full items-center rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
+                    className="flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
                 >
                     <LogOut className="h-5 w-5 shrink-0" />
-                    {!collapsed && <span className="ml-3 font-avant tracking-tight">Sair</span>}
+                    {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Logout</span>}
                 </button>
             </div>
         </aside>

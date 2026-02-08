@@ -4,58 +4,71 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* MetalVale Brand Colors - Refined for Premium Feel */
+  /* MetalVale Brand Colors */
   --color-primary: #EC1C24;
   --color-primary-foreground: #FFFFFF;
 
-  --color-secondary: #1A1A1B; /* Deeper, more "Ive" charcoal */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+  --color-sidebar: var(--sidebar);
+
+  --color-secondary: #0F172A;
   --color-secondary-foreground: #FFFFFF;
 
-  --color-muted: #F8F9FA;
-  --color-muted-dark: #232324;
-  --color-muted-foreground: #64748B; /* More balanced gray */
-
-  --color-accent: #F1F5F9;
-  --color-accent-foreground: #1A1A1B;
-
-  --color-background: #FFFFFF;
-  --color-foreground: #1A1A1B;
-
-  --color-card: #FFFFFF;
-  --color-card-foreground: #1A1A1B;
-
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #1A1A1B;
-
-  --color-border: #F1F1F1;
-  --color-input: #F8F9FA;
-  --color-ring: rgba(236, 28, 36, 0.1);
-
   /* Functional Colors */
-  --color-success: #059669;
-  --color-warning: #D97706;
-  --color-info: #0284C7;
-  --color-destructive: #DC2626;
-  --color-destructive-foreground: #FFFFFF;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+  --color-destructive: #EF4444;
 
   /* Typography */
   --font-avant: var(--font-outfit), "Outfit", sans-serif;
   --font-josefin: var(--font-josefin), "Josefin Sans", sans-serif;
 
-  /* Radii - Premium & Aggressive */
+  /* Radii */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
-  --radius-premium: 20px; /* For cards and major containers */
+  --radius-premium: 16px;
 
-  /* Shadows - Layered and Subtle */
-  --shadow-premium: 0 8px 30px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.08);
-  --shadow-active: 0 4px 15px rgba(236, 28, 36, 0.12);
+  /* Shadows */
+  --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.03), 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-active: 0 8px 30px rgba(236, 28, 36, 0.1);
 
   /* Animation */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-in: fade-in 0.4s ease-out;
+  --animate-in: fade-in 0.5s ease-out;
+}
+
+@layer base {
+  :root {
+    --background: #F9F9FB;
+    --foreground: #1A1A1B;
+    --card: #FFFFFF;
+    --card-foreground: #1A1A1B;
+    --muted: #F3F4F6;
+    --muted-foreground: #64748B;
+    --border: #E5E7EB;
+    --sidebar: #FDFDFD;
+  }
+
+  .dark {
+    --background: #09090A;
+    --foreground: #F8FAFC;
+    --card: #151516;
+    --card-foreground: #F8FAFC;
+    --muted: #1F1F21;
+    --muted-foreground: #94A3B8;
+    --border: #27272A;
+    --sidebar: #0C0C0D;
+  }
 }
 
 @layer base {
@@ -64,22 +77,30 @@
   }
 
   body {
-    @apply bg-muted text-foreground font-josefin antialiased selection:bg-primary/10 selection:text-primary;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground font-josefin antialiased transition-colors duration-300;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-avant font-bold tracking-tight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-avant tracking-tight;
   }
 }
 
 @layer components {
+  .glassmorphism {
+    @apply bg-white/10 dark:bg-black/20 backdrop-blur-[40px] border-r border-white/20 dark:border-white/5;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.05);
+  }
+
   .premium-card {
     @apply bg-card border border-border shadow-premium rounded-premium transition-all duration-300;
   }
 
   .metric-value {
-    @apply font-avant font-bold text-primary tracking-tighter;
+    @apply font-avant font-extrabold text-foreground tracking-tighter leading-none;
   }
 }
