@@ -43,11 +43,11 @@ export function AppSidebar() {
                 collapsed ? "w-20" : "w-64"
             )}
         >
-            {/* Background Texture Layers - The "Apple Glass" Stack */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Background Texture Layers - Premium Glass Stack */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* 1. Underlying Texture / Image */}
                 <div
-                    className="absolute inset-0 z-0 transition-opacity duration-1000 block dark:hidden opacity-100"
+                    className="absolute inset-0 z-0 transition-opacity duration-1000 block dark:hidden"
                     style={{
                         backgroundImage: 'url("/bg-white.jpg")',
                         backgroundSize: 'cover',
@@ -55,7 +55,7 @@ export function AppSidebar() {
                     }}
                 />
                 <div
-                    className="absolute inset-0 z-0 transition-opacity duration-1000 hidden dark:block opacity-60"
+                    className="absolute inset-0 z-0 transition-opacity duration-1000 hidden dark:block"
                     style={{
                         backgroundImage: 'url("/bg-dark.jpg")',
                         backgroundSize: 'cover',
@@ -63,11 +63,11 @@ export function AppSidebar() {
                     }}
                 />
 
-                {/* 2. Glass Overlay (The Frosted Effect) */}
-                <div className="absolute inset-0 z-10 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-3xl" />
+                {/* 2. Glass Overlay (The Frosted Effect) - Thin see-through version */}
+                <div className="absolute inset-0 z-10 bg-white/5 dark:bg-black/50 backdrop-blur-md" />
 
-                {/* 3. Subtle Liquid Glows (Above the glass but subtle) */}
-                <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[30%] bg-primary/10 blur-[100px] rounded-full mix-blend-soft-light animate-pulse" />
+                {/* 3. Subtle Liquid Edge Glow */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent" />
             </div>
 
             <div className="relative z-10 flex flex-col h-full flex-1">
