@@ -1,16 +1,17 @@
 import { Bell, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+import { Input } from "@/components/ui/input";
 
 export function AppHeader() {
     return (
         <header className="flex h-16 items-center justify-between border-b border-border/40 bg-card sticky top-0 z-30 px-10">
             <div className="flex w-full max-w-sm items-center relative group">
-                <Search className="absolute left-0 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors" />
-                <input
+                <Search className="absolute left-3 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors z-10" />
+                <Input
                     type="text"
                     placeholder="Search anything..."
-                    className="h-9 w-full bg-transparent pl-8 pr-4 text-sm font-josefin focus:outline-none transition-all duration-300"
+                    className="h-10 w-full bg-muted/50 dark:bg-zinc-900/50 pl-10 border-transparent focus:border-border transition-all duration-300 rounded-full"
                 />
             </div>
 

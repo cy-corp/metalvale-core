@@ -36,7 +36,7 @@ export function SalesChart({ data }: SalesChartProps) {
 
     return (
         <div className="h-[250px] w-full mt-2">
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" debounce={100}>
                 <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                         <filter id="shadow" height="200%">

@@ -5,17 +5,16 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
     LayoutDashboard,
-    ShoppingCart,
     Package,
-    Users,
     Warehouse,
+    Users,
     BarChart3,
     ChevronLeft,
     ChevronRight,
     LogOut,
     Settings,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
@@ -30,27 +29,33 @@ export function AppSidebar() {
     const pathname = usePathname();
     const [collapsed, setCollapsed] = useState(false);
 
+    const activeIndex = useMemo(() => {
+        const index = menuItems.findIndex(item =>
+            pathname === item.href || (item.href === "/dashboard" && (pathname === "/" || pathname === "/dashboard"))
+        );
+        return index;
+    }, [pathname]);
+
     return (
         <aside
             className={cn(
-                "relative flex flex-col overflow-hidden border-r border-border/40 transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] z-40",
+                "relative flex flex-col overflow-hidden border-r border-border/40 transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] z-40 will-change-[width]",
                 collapsed ? "w-20" : "w-64"
             )}
         >
-            {/* Internal Glass Background */}
+            {/* Background Texture Layers - The "Apple Glass" Stack */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                {/* Background Image - Light Mode */}
+                {/* 1. Underlying Texture / Image */}
                 <div
-                    className="absolute inset-0 z-0 transition-opacity duration-1000 block dark:hidden"
+                    className="absolute inset-0 z-0 transition-opacity duration-1000 block dark:hidden opacity-100"
                     style={{
                         backgroundImage: 'url("/bg-white.jpg")',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
                 />
-                {/* Background Image - Dark Mode */}
                 <div
-                    className="absolute inset-0 z-0 opacity-[0.8] transition-opacity duration-1000 hidden dark:block"
+                    className="absolute inset-0 z-0 transition-opacity duration-1000 hidden dark:block opacity-60"
                     style={{
                         backgroundImage: 'url("/bg-dark.jpg")',
                         backgroundSize: 'cover',
@@ -58,72 +63,98 @@ export function AppSidebar() {
                     }}
                 />
 
-                {/* Clean Glassy Overlay - Glassy Liquid Effect */}
-                <div className="absolute inset-0 bg-white/5 dark:bg-black/60 backdrop-blur-xl" />
+                {/* 2. Glass Overlay (The Frosted Effect) */}
+                <div className="absolute inset-0 z-10 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-3xl" />
+
+                {/* 3. Subtle Liquid Glows (Above the glass but subtle) */}
+                <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[30%] bg-primary/10 blur-[100px] rounded-full mix-blend-soft-light animate-pulse" />
             </div>
 
             <div className="relative z-10 flex flex-col h-full flex-1">
                 <div className="flex h-24 items-center justify-between px-8">
                     {!collapsed && (
-                        <span className="font-avant font-bold text-2xl tracking-tighter text-foreground">
-                            MetalVale
-                        </span>
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                                <span className="text-white font-bold text-lg">M</span>
+                            </div>
+                            <span className="font-avant font-bold text-xl tracking-tighter text-foreground">
+                                MetalVale
+                            </span>
+                        </div>
                     )}
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+                        className="text-muted-foreground hover:text-foreground hover:bg-white/20 dark:hover:bg-white/10 transition-all rounded-full"
                         onClick={() => setCollapsed(!collapsed)}
                     >
                         {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                     </Button>
                 </div>
 
-                <nav className="flex-1 space-y-1.5 p-4">
-                    {menuItems.map((item) => {
-                        const isActive = pathname === item.href || (item.href === "/dashboard" && (pathname === "/" || pathname === "/dashboard"));
-                        return (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className={cn(
-                                    "group relative flex items-center rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300",
-                                    isActive
-                                        ? "bg-white/80 dark:bg-white/10 text-foreground shadow-sm"
-                                        : "text-muted-foreground hover:bg-white/40 dark:hover:bg-white/5 hover:text-foreground"
-                                )}
-                            >
-                                {/* Active Indicator Bar - Exact Mockup Style */}
-                                {isActive && (
-                                    <div className="absolute left-[-16px] top-1/2 -translate-y-1/2 h-7 w-[3px] rounded-r-full bg-primary animate-in fade-in slide-in-from-left-2 duration-400" />
-                                )}
+                <div className="relative flex-1 px-4 py-2">
+                    {/* Sliding Indicator Background */}
+                    {activeIndex !== -1 && (
+                        <div
+                            className="absolute left-4 right-4 h-[48px] rounded-xl bg-white/80 dark:bg-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-white/40 dark:border-white/5 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] z-0"
+                            style={{
+                                top: `${activeIndex * (48 + 6) + 8}px`, // 48px height + 6px gap + 8px initial padding
+                            }}
+                        >
+                            {/* Vertical "Pill" Indicator */}
+                            <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-full bg-primary shadow-[0_0_10px_rgba(236,28,36,0.5)]" />
+                        </div>
+                    )}
 
-                                <item.icon
+                    <nav className="relative z-10 space-y-1.5 pt-0">
+                        {menuItems.map((item, index) => {
+                            const isActive = activeIndex === index;
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
                                     className={cn(
-                                        "h-5 w-5 shrink-0 transition-colors duration-300",
-                                        isActive ? "text-foreground" : "group-hover:text-foreground"
+                                        "group flex items-center h-[48px] rounded-xl px-4 text-sm font-medium transition-all duration-300",
+                                        isActive
+                                            ? "text-foreground"
+                                            : "text-muted-foreground hover:text-foreground"
                                     )}
-                                />
-                                {!collapsed && (
-                                    <span className="ml-4 font-avant tracking-tight font-semibold">
-                                        {item.label}
-                                    </span>
-                                )}
-                            </Link>
-                        );
-                    })}
-                </nav>
+                                >
+                                    <item.icon
+                                        className={cn(
+                                            "h-5 w-5 shrink-0 transition-all duration-500",
+                                            isActive ? "text-primary scale-110" : "group-hover:text-foreground group-hover:scale-105"
+                                        )}
+                                    />
+                                    {!collapsed && (
+                                        <span className={cn(
+                                            "ml-4 font-avant tracking-tight font-semibold transition-all duration-300",
+                                            isActive ? "translate-x-1" : "group-hover:translate-x-0.5"
+                                        )}>
+                                            {item.label}
+                                        </span>
+                                    )}
+                                </Link>
+                            );
+                        })}
+                    </nav>
+                </div>
 
-                <div className="p-4 space-y-1 pb-8">
+                <div className="p-4 space-y-1 pb-8 mt-auto border-t border-white/10 dark:border-white/5">
                     <Link
                         href="/settings"
-                        className="flex items-center rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-white/40 dark:hover:bg-white/5 hover:text-foreground transition-all duration-300"
+                        className={cn(
+                            "flex items-center h-[48px] rounded-xl px-4 text-sm font-medium text-muted-foreground transition-all duration-300",
+                            pathname === "/settings"
+                                ? "bg-white/80 dark:bg-white/10 text-foreground border border-white/40 dark:border-white/5"
+                                : "hover:bg-white/40 dark:hover:bg-white/5 hover:text-foreground"
+                        )}
                     >
-                        <Settings className="h-5 w-5 shrink-0" />
+                        <Settings className={cn("h-5 w-5 shrink-0", pathname === "/settings" && "text-primary")} />
                         {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Settings</span>}
                     </Link>
                     <button
-                        className="flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
+                        className="flex w-full items-center h-[48px] rounded-xl px-4 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
                     >
                         <LogOut className="h-5 w-5 shrink-0" />
                         {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Logout</span>}
