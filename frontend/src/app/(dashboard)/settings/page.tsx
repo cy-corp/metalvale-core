@@ -16,19 +16,19 @@ import { Switch } from "@/components/ui/switch";
 
 export default function SettingsPage() {
     const settingsSections = [
-        { title: "Personal Information", description: "Manage your profile details and preferences.", icon: User },
-        { title: "Security & Privacy", description: "Update passwords and manage 2FA settings.", icon: Shield },
-        { title: "Notifications", description: "Configure system and email alerts.", icon: Bell },
-        { title: "Regional Settings", description: "Language, currency, and timezone.", icon: Globe },
-        { title: "System Interface", description: "Appearance and dashboard layout.", icon: Monitor },
-        { title: "API & Integrations", description: "Manage external service connections.", icon: Database },
+        { title: "Informações Pessoais", description: "Gerencie os detalhes do seu perfil e preferências.", icon: User },
+        { title: "Segurança & Privacidade", description: "Atualize senhas e gerencie configurações de 2FA.", icon: Shield },
+        { title: "Notificações", description: "Configure alertas do sistema e e-mail.", icon: Bell },
+        { title: "Configurações Regionais", description: "Idioma, moeda e fuso horário.", icon: Globe },
+        { title: "Interface do Sistema", description: "Aparência e layout do dashboard.", icon: Monitor },
+        { title: "API & Integrações", description: "Gerencie conexões de serviços externos.", icon: Database },
     ];
 
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-12">
             <div className="space-y-1">
-                <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">System Settings</h1>
-                <p className="text-sm text-muted-foreground">Configure your account and platform preferences.</p>
+                <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">Configurações do Sistema</h1>
+                <p className="text-sm text-muted-foreground">Configure sua conta e preferências da plataforma.</p>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3">
@@ -55,7 +55,7 @@ export default function SettingsPage() {
                     <Card className="premium-card bg-zinc-900 text-white overflow-hidden border-none shadow-xl">
                         <CardHeader className="px-8 pt-8">
                             <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-zinc-400">
-                                Mobile Access
+                                Acesso Mobile
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="px-8 pb-8 space-y-6">
@@ -63,10 +63,10 @@ export default function SettingsPage() {
                                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                                     <Smartphone className="h-5 w-5 text-primary" />
                                 </div>
-                                <p className="text-sm font-medium">Get the MetalVale Mobile app for real-time factory floor alerts.</p>
+                                <p className="text-sm font-medium">Baixe o app MetalVale Mobile para alertas em tempo real do chão de fábrica.</p>
                             </div>
                             <Button className="w-full bg-white text-black hover:bg-zinc-200 font-bold font-avant text-[11px] uppercase tracking-widest h-12">
-                                Download App
+                                Baixar App
                             </Button>
                         </CardContent>
                     </Card>
@@ -74,28 +74,28 @@ export default function SettingsPage() {
                     <Card className="premium-card bg-card overflow-hidden">
                         <CardHeader className="px-6 pt-6">
                             <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                                Preferences
+                                Preferências
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="px-6 pb-6 space-y-6">
                             <div className="flex items-center justify-between">
                                 <div className="space-y-0.5">
-                                    <p className="text-sm font-semibold">Real-time Sync</p>
-                                    <p className="text-[10px] text-muted-foreground">Sync data across devices</p>
+                                    <p className="text-sm font-semibold">Sincronização em Tempo Real</p>
+                                    <p className="text-[10px] text-muted-foreground">Sincronizar dados entre dispositivos</p>
                                 </div>
                                 <Switch defaultChecked />
                             </div>
                             <div className="flex items-center justify-between">
                                 <div className="space-y-0.5">
-                                    <p className="text-sm font-semibold">Dark Mode</p>
-                                    <p className="text-[10px] text-muted-foreground">Toggle platform theme</p>
+                                    <p className="text-sm font-semibold">Modo Escuro</p>
+                                    <p className="text-[10px] text-muted-foreground">Alternar tema da plataforma</p>
                                 </div>
                                 <Switch />
                             </div>
                             <div className="flex items-center justify-between">
                                 <div className="space-y-0.5">
-                                    <p className="text-sm font-semibold">Public Profile</p>
-                                    <p className="text-[10px] text-muted-foreground">Make profile visible to partners</p>
+                                    <p className="text-sm font-semibold">Perfil Público</p>
+                                    <p className="text-[10px] text-muted-foreground">Tornar perfil visível para parceiros</p>
                                 </div>
                                 <Switch />
                             </div>
@@ -104,5 +104,6 @@ export default function SettingsPage() {
                 </div>
             </div>
         </div>
+
     );
 }

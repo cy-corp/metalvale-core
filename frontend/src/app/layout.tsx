@@ -16,7 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "MetalVale | SaaS Dashboard",
+  title: "MetalVale | Dashboard Industrial",
   description: "Painel de gestão e e-commerce MetalVale - Força e Confiabilidade Industrial",
 };
 

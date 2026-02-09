@@ -19,10 +19,10 @@ import { Button } from "@/components/ui/button";
 
 const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-    { icon: Package, label: "Inventory", href: "/inventory" },
-    { icon: Warehouse, label: "Production", href: "/production" },
-    { icon: Users, label: "Finance", href: "/finance" },
-    { icon: BarChart3, label: "Reports", href: "/reports" },
+    { icon: Package, label: "Estoque", href: "/inventory" },
+    { icon: Warehouse, label: "Produção", href: "/production" },
+    { icon: Users, label: "Financeiro", href: "/finance" },
+    { icon: BarChart3, label: "Relatórios", href: "/reports" },
 ];
 
 export function AppSidebar() {
@@ -151,15 +151,16 @@ export function AppSidebar() {
                         )}
                     >
                         <Settings className={cn("h-5 w-5 shrink-0", pathname === "/settings" && "text-primary")} />
-                        {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Settings</span>}
+                        {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Configurações</span>}
                     </Link>
                     <button
                         className="flex w-full items-center h-[48px] rounded-xl px-4 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-300"
                     >
                         <LogOut className="h-5 w-5 shrink-0" />
-                        {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Logout</span>}
+                        {!collapsed && <span className="ml-4 font-avant tracking-tight font-semibold">Sair</span>}
                     </button>
                 </div>
+
             </div>
         </aside>
     );

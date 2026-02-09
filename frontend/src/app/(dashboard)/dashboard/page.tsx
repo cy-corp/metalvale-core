@@ -25,20 +25,20 @@ export default function DashboardPage() {
             {/* Top row: 2 Primary Metrics */}
             <div className="grid gap-6 md:grid-cols-2">
                 <MetricCard
-                    title="Total Revenue"
-                    value="1.2B"
+                    title="Receita Total"
+                    value="R$ 1.2B"
                     delta={{ value: 5.4, isPositive: true }}
-                    description="Outfit projects"
+                    description="Projetos de vestuário"
                     icon={Files}
-                    cta={{ label: "View all revenue", href: "#" }}
+                    cta={{ label: "Ver toda receita", href: "#" }}
                     className="md:col-span-1"
                 />
                 <MetricCard
-                    title="Operational Efficiency"
+                    title="Eficiência Operacional"
                     value="96.5%"
                     icon={Zap}
-                    description="Performance metrics"
-                    cta={{ label: "Explore efficiency", href: "#" }}
+                    description="Métricas de desempenho"
+                    cta={{ label: "Explorar eficiência", href: "#" }}
                     className="md:col-span-1"
                 />
             </div>
@@ -46,32 +46,32 @@ export default function DashboardPage() {
             {/* Middle row: 4 Secondary Metrics */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <MetricCard
-                    title="Active Projects"
+                    title="Projetos Ativos"
                     value="32"
-                    description="Outfit projects"
+                    description="Projetos de vestuário"
                     icon={Files}
-                    cta={{ label: "Critical alerts", href: "#" }}
+                    cta={{ label: "Alertas críticos", href: "#" }}
                 />
                 <MetricCard
-                    title="Material Stock"
+                    title="Estoque de Material"
                     value="2.5M"
-                    description="Outfit stock"
+                    description="Estoque de vestuário"
                     icon={Box}
-                    cta={{ label: "Critical stock", href: "#" }}
+                    cta={{ label: "Estoque crítico", href: "#" }}
                 />
                 <MetricCard
-                    title="Production Output"
+                    title="Produção"
                     value="730K"
-                    description="Outfit output"
+                    description="Produção de vestuário"
                     icon={Activity}
-                    cta={{ label: "Call-to-actions", href: "#" }}
+                    cta={{ label: "Ações necessárias", href: "#" }}
                 />
                 <MetricCard
-                    title="Order Fulfillment"
+                    title="Cumprimento de Pedidos"
                     value="40%"
-                    description="Outfit fulfillment"
+                    description="Cumprimento de vestuário"
                     icon={CheckCircle2}
-                    cta={{ label: "Call-to-actions", href: "#" }}
+                    cta={{ label: "Ações necessárias", href: "#" }}
                 />
             </div>
 
@@ -80,10 +80,10 @@ export default function DashboardPage() {
                 <Card className="premium-card bg-card overflow-hidden">
                     <CardHeader className="flex flex-row items-center justify-between px-8 pt-8">
                         <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                            Monthly Trends
+                            Tendências Mensais
                         </CardTitle>
                         <Button variant="ghost" size="sm" className="text-[10px] font-bold font-avant uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-                            <Calendar size={12} className="text-primary" /> Month <ChevronDown size={12} />
+                            <Calendar size={12} className="text-primary" /> Mês <ChevronDown size={12} />
                         </Button>
                     </CardHeader>
                     <CardContent className="px-8 pb-8 pt-4">
@@ -94,14 +94,14 @@ export default function DashboardPage() {
                 <Card className="premium-card bg-card overflow-hidden h-full flex flex-col">
                     <CardHeader className="px-8 pt-8 pb-4">
                         <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                            Data Table
+                            Tabela de Dados
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="p-0 flex-1">
                         <RecentOrdersTable orders={recentOrders.slice(0, 4)} />
                         {/* Placeholder for "Show more..." link if needed, image shows 4 rows */}
                         <div className="p-4 mt-auto text-center border-t border-border/40">
-                            <a href="#" className="text-[10px] font-bold font-avant uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Show more ...</a>
+                            <a href="#" className="text-[10px] font-bold font-avant uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Ver mais ...</a>
                         </div>
                     </CardContent>
                 </Card>

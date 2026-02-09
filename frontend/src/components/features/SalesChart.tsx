@@ -69,7 +69,7 @@ export function SalesChart({ data }: SalesChartProps) {
                                         <div className="flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                                             <p className="text-sm font-bold font-avant text-foreground">
-                                                ${payload[0].value?.toLocaleString()}
+                                                R$ {payload[0].value?.toLocaleString()}
                                             </p>
                                         </div>
                                     </div>

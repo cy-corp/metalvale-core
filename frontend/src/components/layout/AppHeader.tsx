@@ -10,7 +10,7 @@ export function AppHeader() {
                 <Search className="absolute left-3 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors z-10" />
                 <Input
                     type="text"
-                    placeholder="Search anything..."
+                    placeholder="Pesquisar..."
                     className="h-10 w-full bg-muted/50 dark:bg-zinc-900/50 pl-10 border-transparent focus:border-border transition-all duration-300 rounded-full"
                 />
             </div>
@@ -25,9 +25,10 @@ export function AppHeader() {
 
                 <div className="flex items-center gap-3.5 pl-6 border-l border-border/60">
                     <div className="text-right hidden md:block">
-                        <p className="text-xs font-bold font-avant tracking-tight text-foreground leading-none">Admin User</p>
-                        <p className="text-[10px] text-muted-foreground font-josefin uppercase tracking-widest mt-1">Lead Operator</p>
+                        <p className="text-xs font-bold font-avant tracking-tight text-foreground leading-none">Usuário Admin</p>
+                        <p className="text-[10px] text-muted-foreground font-josefin uppercase tracking-widest mt-1">Operador Líder</p>
                     </div>
+
                     <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center border border-white/10 shadow-premium overflow-hidden ring-2 ring-muted hover:ring-primary transition-all cursor-pointer">
                         <User className="h-4 w-4 text-white/80" />
                     </div>

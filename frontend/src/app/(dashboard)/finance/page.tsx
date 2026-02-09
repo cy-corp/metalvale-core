@@ -18,40 +18,40 @@ export default function FinancePage() {
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                    <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">Financial Overview</h1>
-                    <p className="text-sm text-muted-foreground">Manage accounts, revenue, and expenditures.</p>
+                    <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">Visão Geral Financeira</h1>
+                    <p className="text-sm text-muted-foreground">Gerencie contas, receitas e despesas.</p>
                 </div>
-                <Button className="h-10 bg-primary hover:bg-primary/90 text-white px-4 font-semibold font-avant text-xs uppercase tracking-wider flex items-center gap-2">
-                    <Download className="h-4 w-4" /> Export Report
-                </Button>
+                <button className="h-10 bg-primary hover:bg-primary/90 text-white px-4 font-semibold font-avant text-xs uppercase tracking-wider flex items-center gap-2 rounded-md">
+                    <Download className="h-4 w-4" /> Exportar Relatório
+                </button>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <MetricCard
-                    title="Total Revenue"
+                    title="Receita Total"
                     value="R$ 1.2M"
                     delta={{ value: 14.2, isPositive: true }}
-                    description="Monthly revenue"
+                    description="Receita mensal"
                     icon={TrendingUp}
                 />
                 <MetricCard
-                    title="Net Profit"
+                    title="Lucro Líquido"
                     value="R$ 432K"
                     delta={{ value: 5.4, isPositive: true }}
-                    description="After tax & ops"
+                    description="Após impostos e operações"
                     icon={DollarSign}
                 />
                 <MetricCard
-                    title="Accounts Receivable"
+                    title="Contas a Receber"
                     value="R$ 210K"
-                    description="Pending invoices"
+                    description="Faturas pendentes"
                     icon={CreditCard}
                 />
                 <MetricCard
-                    title="Operating Margin"
+                    title="Margem Operacional"
                     value="36%"
                     delta={{ value: 2.1, isPositive: false }}
-                    description="Industrial baseline"
+                    description="Base industrial"
                     icon={Wallet}
                 />
             </div>
@@ -60,7 +60,7 @@ export default function FinancePage() {
                 <Card className="premium-card bg-card lg:col-span-2 overflow-hidden">
                     <CardHeader className="px-8 pt-8">
                         <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                            Recent Transactions
+                            Transações Recentes
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
@@ -73,7 +73,7 @@ export default function FinancePage() {
                                         </div>
                                         <div>
                                             <p className="font-semibold text-sm">Transação #{2034 + i}</p>
-                                            <p className="text-xs text-muted-foreground">{i % 2 === 0 ? 'Payment Received' : 'Material Purchase'}</p>
+                                            <p className="text-xs text-muted-foreground">{i % 2 === 0 ? 'Pagamento Recebido' : 'Compra de Material'}</p>
                                         </div>
                                     </div>
                                     <div className="text-right">
@@ -91,13 +91,13 @@ export default function FinancePage() {
                 <Card className="premium-card bg-card overflow-hidden">
                     <CardHeader className="px-8 pt-8">
                         <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                            Revenue by Sector
+                            Receita por Setor
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="px-8 pb-8 space-y-6">
                         <div className="space-y-2">
                             <div className="flex justify-between text-xs font-avant uppercase tracking-wider">
-                                <span>Steel Parts</span>
+                                <span>Peças de Aço</span>
                                 <span className="font-bold">65%</span>
                             </div>
                             <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -106,7 +106,7 @@ export default function FinancePage() {
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between text-xs font-avant uppercase tracking-wider">
-                                <span>Machinery</span>
+                                <span>Maquinário</span>
                                 <span className="font-bold">20%</span>
                             </div>
                             <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -115,7 +115,7 @@ export default function FinancePage() {
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between text-xs font-avant uppercase tracking-wider">
-                                <span>Consulting</span>
+                                <span>Consultoria</span>
                                 <span className="font-bold">15%</span>
                             </div>
                             <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -125,6 +125,7 @@ export default function FinancePage() {
                     </CardContent>
                 </Card>
             </div>
+
         </div>
     );
 }

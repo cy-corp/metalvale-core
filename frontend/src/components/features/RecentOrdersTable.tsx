@@ -20,10 +20,10 @@ export function RecentOrdersTable({ orders }: RecentOrdersTableProps) {
             <Table>
                 <TableHeader>
                     <TableRow className="border-border/40 hover:bg-transparent px-8">
-                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground pl-8 py-4">Date</TableHead>
-                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground py-4">Team</TableHead>
+                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground pl-8 py-4">Data</TableHead>
+                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground py-4">Equipe</TableHead>
                         <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground py-4">Status</TableHead>
-                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground text-right pr-8 py-4">Period</TableHead>
+                        <TableHead className="font-avant uppercase font-bold text-[10px] tracking-[0.15em] text-muted-foreground text-right pr-8 py-4">Período</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -42,7 +42,7 @@ export function RecentOrdersTable({ orders }: RecentOrdersTableProps) {
                                     {format(new Date(order.createdAt), "dd/MM/yyyy")}
                                 </TableCell>
                                 <TableCell className="font-josefin text-[11px] py-5 text-foreground font-semibold">
-                                    {isEven ? "Complete" : "Industrial"}
+                                    {isEven ? "Completo" : "Industrial"}
                                 </TableCell>
                                 <TableCell className="py-5">
                                     <div className="flex items-center gap-2">
@@ -54,12 +54,12 @@ export function RecentOrdersTable({ orders }: RecentOrdersTableProps) {
                                             "text-[10px] font-bold font-avant uppercase tracking-wide",
                                             isEven ? "text-primary" : "text-success"
                                         )}>
-                                            {isEven ? "Denied" : "Desired"}
+                                            {isEven ? "Negado" : "Desejado"}
                                         </span>
                                     </div>
                                 </TableCell>
                                 <TableCell className="text-right font-josefin text-[11px] text-muted-foreground pr-8 py-5 font-medium">
-                                    {index + 1} day ago
+                                    {index + 1} {index + 1 === 1 ? 'dia atrás' : 'dias atrás'}
                                 </TableCell>
                             </TableRow>
                         );

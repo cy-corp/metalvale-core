@@ -17,24 +17,24 @@ export default function ReportsPage() {
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                    <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">Analytics & Reports</h1>
-                    <p className="text-sm text-muted-foreground">Comprehensive insights into industrial performance.</p>
+                    <h1 className="text-2xl font-bold font-avant tracking-tight text-foreground">Análise & Relatórios</h1>
+                    <p className="text-sm text-muted-foreground">Insights abrangentes sobre o desempenho industrial.</p>
                 </div>
                 <div className="flex gap-2">
                     <Button variant="outline" className="h-10 border-border/40 font-avant text-xs uppercase tracking-wider flex items-center gap-2">
-                        <Calendar className="h-4 w-4 text-primary" /> Last 30 Days <ChevronDown size={14} />
+                        <Calendar className="h-4 w-4 text-primary" /> Últimos 30 Dias <ChevronDown size={14} />
                     </Button>
                     <Button variant="outline" className="h-10 border-border/40 font-avant text-xs uppercase tracking-wider flex items-center gap-2">
-                        <Filter className="h-4 w-4" /> Filters
+                        <Filter className="h-4 w-4" /> Filtros
                     </Button>
                 </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {[
-                    { title: "Production Yield", icon: BarChart3, color: "text-primary" },
-                    { title: "Inventory Turnover", icon: TrendingUp, color: "text-emerald-500" },
-                    { title: "Market Distribution", icon: PieChart, color: "text-zinc-500" }
+                    { title: "Rendimento de Produção", icon: BarChart3, color: "text-primary", desc: "Análise padronizada de métricas de rendimento de produção em todos os setores." },
+                    { title: "Giro de Estoque", icon: TrendingUp, color: "text-emerald-500", desc: "Análise padronizada de métricas de giro de estoque em todos os setores." },
+                    { title: "Distribuição de Mercado", icon: PieChart, color: "text-zinc-500", desc: "Análise padronizada de métricas de distribuição de mercado em todos os setores." }
                 ].map((report, i) => (
                     <Card key={i} className="premium-card bg-card hover:border-primary/20 transition-all cursor-pointer group">
                         <CardHeader className="px-8 pt-8">
@@ -49,9 +49,9 @@ export default function ReportsPage() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="px-8 pb-8">
-                            <p className="text-sm text-muted-foreground">Standardized analysis of {report.title.toLowerCase()} metrics across all sectors.</p>
+                            <p className="text-sm text-muted-foreground">{report.desc}</p>
                             <div className="mt-6 flex items-center justify-between text-[10px] font-bold font-avant uppercase tracking-[0.2em] text-muted-foreground">
-                                <span>Updated 2h ago</span>
+                                <span>Atualizado há 2h</span>
                                 <span className="p-1 px-2 border border-border/40 rounded-full">PDF + CSV</span>
                             </div>
                         </CardContent>
@@ -62,7 +62,7 @@ export default function ReportsPage() {
             <Card className="premium-card bg-card overflow-hidden">
                 <CardHeader className="px-8 pt-8 border-b border-border/40">
                     <CardTitle className="text-[11px] font-bold font-avant uppercase tracking-[0.15em] text-muted-foreground">
-                        Report Generation History
+                        Histórico de Geração de Relatórios
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
@@ -71,17 +71,18 @@ export default function ReportsPage() {
                             <BarChart3 className="h-10 w-10 text-muted-foreground" />
                         </div>
                         <div className="space-y-1">
-                            <h3 className="font-semibold font-avant text-lg text-foreground">Automated Reports</h3>
-                            <p className="text-sm text-muted-foreground max-w-sm mx-auto">Configure your recurring reports to be delivered directly to your department heads.</p>
+                            <h3 className="font-semibold font-avant text-lg text-foreground">Relatórios Automatizados</h3>
+                            <p className="text-sm text-muted-foreground max-w-sm mx-auto">Configure seus relatórios recorrentes para serem entregues diretamente aos chefes de departamento.</p>
                         </div>
                         <div className="pt-4">
                             <Button className="h-10 bg-primary hover:bg-primary/90 text-white px-8 font-semibold font-avant text-xs uppercase tracking-wider">
-                                Configure Automation
+                                Configurar Automação
                             </Button>
                         </div>
                     </div>
                 </CardContent>
             </Card>
+
         </div>
     );
 }
