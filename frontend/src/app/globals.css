@@ -49,7 +49,7 @@
 
 @layer base {
   :root {
-    --background: #F9F9FB;
+    --background: #eeeeee;
     --foreground: #1A1A1B;
     --card: #FFFFFF;
     --card-foreground: #1A1A1B;

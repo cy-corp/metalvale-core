@@ -4,7 +4,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function AppHeader() {
     return (
-        <header className="flex h-16 items-center justify-between border-b border-border/40 bg-background/50 backdrop-blur-md sticky top-0 z-30 px-10">
+        <header className="flex h-16 items-center justify-between border-b border-border/40 bg-card sticky top-0 z-30 px-10">
             <div className="flex w-full max-w-sm items-center relative group">
                 <Search className="absolute left-0 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors" />
                 <input
