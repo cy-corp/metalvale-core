@@ -41,7 +41,7 @@
 
   /* Shadows */
   --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.03), 0 0 1px rgba(0, 0, 0, 0.05);
-  --shadow-active: 0 8px 30px rgba(236, 28, 36, 0.1);
+  --shadow-active: 0 12px 40px rgba(0, 0, 0, 0.08);
 
   /* Animation */
   --animate-in: fade-in 0.5s ease-out;
@@ -97,7 +97,12 @@
   }
 
   .premium-card {
-    @apply bg-card border border-border shadow-premium rounded-premium transition-all duration-300;
+    @apply bg-card border border-border shadow-premium rounded-premium transition-all duration-500;
+  }
+
+  .premium-card:hover {
+    @apply border-primary/20 shadow-active;
+    transform: translateY(-4px);
   }
 
   .metric-value {

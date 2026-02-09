@@ -74,7 +74,7 @@ export function AppSidebar() {
                 <div className="flex h-24 items-center justify-between px-8">
                     {!collapsed && (
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
                                 <span className="text-white font-bold text-lg">M</span>
                             </div>
                             <span className="font-avant font-bold text-xl tracking-tighter text-foreground">
@@ -102,7 +102,7 @@ export function AppSidebar() {
                             }}
                         >
                             {/* Vertical "Pill" Indicator */}
-                            <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-full bg-primary shadow-[0_0_10px_rgba(236,28,36,0.5)]" />
+                            <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-full bg-primary" />
                         </div>
                     )}
 

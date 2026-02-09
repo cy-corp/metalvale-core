@@ -34,3 +34,8 @@ A premium, industrial-modern aesthetic inspired by high-end manufacturing and Ap
 - Based on an 8px grid system.
 - Standard gutter: `32px` (`p-8`).
 - Component spacing: `16px` (`gap-4`).
+
+## Design Constraints
+- **No Neon/Glow Effects**: Avoid using high-intensity color glows, neon filters, or fading "aura" effects. 
+- **Shadows**: Stick to clean, neutral shadows (`premium`) or subtle neutral lifts. Do not use primary-colored shadows for emphasis.
+- **Animations**: Keep animations functional and understated. Avoid distracting loops like "pings" or "pulses" unless they serve a critical functional purpose.
